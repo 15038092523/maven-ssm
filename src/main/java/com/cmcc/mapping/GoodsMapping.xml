@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.cmcc.dao.GoodsDao">
+
+	<resultMap id="resultMap" type="Sku">
+        <id property="id" column="id" />
+        <result property="name" column="name" />
+        <result property="size" column="size" />
+        <result property="color" column="color" />
+        <result property="price" column="price" />
+        
+        <association property="item" javaType="Item">
+            <id property="cid" column="id" />
+            <result property="simpleName" column="simple_name" />
+            <result property="brand" column="brand" /> 
+            <result property="typeId" column="type_id" />            
+        </association>        
+    </resultMap>
+    <!-- <resultMap id="resultMap1" type="Item">
+    <id property="id" column="id" />
+            <result property="simpleName" column="simple_name" />
+            <result property="brand" column="brand" />   
+        <association property="supplier" javaType="Supplier">
+            <id property="id" column="id" />
+            <result property="sellName" column="sell_name" />
+            <result property="address" column="address" />            
+        </association>        
+    </resultMap>
+	 -->
+	<select id="getEntity" parameterType="Integer" resultMap="resultMap">
+		select * FROM sku s,item i 
+		where i.id = s.item_id AND s.id = #{id}
+	</select>
+	
+	<select id="getAll"  resultMap="resultMap">
+		select * FROM sku s,item i 
+		where i.id = s.item_id limit #{startPage},#{rows}
+	</select>
+
+	<update id="updateSku" parameterType = "Sku">
+	update sku  set 
+	name=#{name},
+	price=#{price},
+	color=#{color},
+	size=#{size}
+	where id=#{id}
+	</update>
+	
+	<delete id="deleteGoods" parameterType = "Integer">
+	delete from sku where id =#{id}
+	</delete>
+</mapper> 
