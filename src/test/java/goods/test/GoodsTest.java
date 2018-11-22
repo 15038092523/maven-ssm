@@ -47,9 +47,7 @@ public class GoodsTest {
 		JedisPoolConfig config = new JedisPoolConfig(); // 连接池的配置对象
 		config.setMaxTotal(100); // 设置最大连接数
 		config.setMaxIdle(10); // 设置最大空闲连接数
-
 		JedisPool jedisPool = new JedisPool(config, "192.168.199.152", 6379);
-
 		Jedis jedis = null;
 		try {
 			jedis = jedisPool.getResource(); // 获取连接
@@ -75,19 +73,14 @@ public class GoodsTest {
 		ApplicationContext ctx = new ClassPathXmlApplicationContext("spring-mybatis.xml");
 		JedisPool pool = (JedisPool) ctx.getBean("jedisPool");
 		Jedis jedis = null;
-		try {
-			jedis = pool.getResource();
-			jedis.auth("foobared");
-			jedis.set("name", "lisi");
-			String name = jedis.get("name");
-			System.out.println(name);
-		} catch (Exception ex) {
-			ex.printStackTrace();
-		} finally {
-			if (jedis != null) {
-				// 关闭连接
-				jedis.close();
-			}
-		}
+
+		// 此处报错，未获得实例
+		jedis = pool.getResource();
+		jedis.auth("foobared");
+		jedis.set("name", "lisi");
+		String name = jedis.get("name");
+		System.out.println(name);
+		// 关闭连接
+		jedis.close();
 	}
 }
