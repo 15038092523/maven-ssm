@@ -116,5 +116,5 @@
 		<constructor-arg name="port" value="6379"></constructor-arg>
 		<constructor-arg name="poolConfig" ref="jedisPoolConfig"></constructor-arg>
 	</bean>
-
+	<bean id = "jedisClient" class = "com.cmcc.dao.impl.JedisClientImpl"></bean>
 </beans>

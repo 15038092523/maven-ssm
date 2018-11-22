@@ -4,6 +4,7 @@ import org.junit.Test;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
+import com.cmcc.dao.JedisClient;
 import com.cmcc.entity.Sku;
 import com.cmcc.service.GoodsService;
 import com.cmcc.service.impl.GoodsServiceImpl;
@@ -82,5 +83,13 @@ public class GoodsTest {
 		System.out.println(name);
 		// πÿ±’¡¨Ω”
 		jedis.close();
+	}
+	
+	@Test
+	public void jedisPoolTest3() {
+		ApplicationContext ctx = new ClassPathXmlApplicationContext("spring-mybatis.xml");
+		JedisClient jedisClient = (JedisClient) ctx.getBean("jedisClient");
+		jedisClient.set("321", "321");
+		System.out.println(jedisClient.get("321"));
 	}
 }
