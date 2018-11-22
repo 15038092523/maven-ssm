@@ -13,4 +13,6 @@ public interface GoodsService {
 	List<Sku> getAll(int startPage,int rows);
 	
 	Integer deleteGoods(Integer id);
+	
+	Integer deleteGoodsList(List<Integer> list);
 }

@@ -51,4 +51,11 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<delete id="deleteGoods" parameterType = "Integer">
 	delete from sku where id =#{id}
 	</delete>
+	
+	<delete id="deleteGoodsList"  parameterType = "java.util.List" >
+     delete from sku where id in
+      <foreach collection="list"  item="id" open="(" separator="," close=")"  >
+           #{id}
+      </foreach>
+</delete>
 </mapper> 

@@ -48,6 +48,12 @@
 			id:  <input type="text" name="id" /><br> 
 			<input type="submit" value="删除" align="center" />
 		</form>
+		<br>
+		<form action="${pageContext.request.contextPath }/goods/deleteGoodsList.do"
+			method="post">
+			ids(","隔开):  <input type="text" name="ids" /><br> 
+			<input type="submit" value="删除" align="center" />
+		</form>
 		
 	</div>
 </body>

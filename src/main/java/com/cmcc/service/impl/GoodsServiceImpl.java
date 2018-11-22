@@ -27,7 +27,6 @@ public class GoodsServiceImpl implements GoodsService {
 		// 从缓存中取内容
 		try {
 			String json = jedisClient.get("SkuId:" + id);
-			System.out.println(json);
 			if (!StringUtils.isBlank(json)) {
 				// 把字符串转换成对象
 				sku =JsonUtils.jsonToPojo(json, Sku.class);
@@ -71,6 +70,17 @@ public class GoodsServiceImpl implements GoodsService {
 			}
 		}
 		return result;
+	}
+
+	public Integer deleteGoodsList(List<Integer> list) {
+		if(list != null && !list.isEmpty()){
+			Integer result = goodsDao.deleteGoodsList(list);
+			for (Integer id : list) {
+				jedisClient.del("SkuId:"+id);
+			}
+		}
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 }

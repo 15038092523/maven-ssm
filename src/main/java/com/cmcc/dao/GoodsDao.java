@@ -15,5 +15,7 @@ public interface GoodsDao {
 	List<Sku> getAll(@Param("startPage")int startPage,@Param("rows")int rows);
 	
 	Integer deleteGoods(Integer id);
+	
+	Integer deleteGoodsList(List<Integer> list);
 
 }

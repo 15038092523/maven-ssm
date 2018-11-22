@@ -33,6 +33,7 @@ public class JedisClientImpl implements JedisClient{
 	//hash表get
 	public String hget(String hkey, String key) {
 		Jedis jedis = jedisPool.getResource();
+		jedis.auth("foobared");
 		String string = jedis.hget(hkey, key);
 		jedis.close();
 		return string;
@@ -41,6 +42,7 @@ public class JedisClientImpl implements JedisClient{
 	//hash表set
 	public long hset(String hkey, String key, String value) {
 		Jedis jedis = jedisPool.getResource();
+		jedis.auth("foobared");
 		Long result = jedis.hset(hkey, key, value);
 		jedis.close();
 		return result;
@@ -49,6 +51,7 @@ public class JedisClientImpl implements JedisClient{
 	//自增
 	public long incr(String key) {
 		Jedis jedis = jedisPool.getResource();
+		jedis.auth("foobared");
 		Long result = jedis.incr(key);
 		jedis.close();
 		return result;
@@ -57,6 +60,7 @@ public class JedisClientImpl implements JedisClient{
 	//设置key的过期时间
 	public long expire(String key, int second) {
 		Jedis jedis = jedisPool.getResource();
+		jedis.auth("foobared");
 		Long result = jedis.expire(key, second);
 		jedis.close();
 		return result;
@@ -65,6 +69,7 @@ public class JedisClientImpl implements JedisClient{
 	//返回 key 的剩余生存时间
 	public long ttl(String key) {
 		Jedis jedis = jedisPool.getResource();
+		jedis.auth("foobared");
 		Long result = jedis.ttl(key);
 		jedis.close();
 		return result;
@@ -73,6 +78,7 @@ public class JedisClientImpl implements JedisClient{
 	//删除
 	public long del(String key) {
 		Jedis jedis = jedisPool.getResource();
+		jedis.auth("foobared");
 		Long result = jedis.del(key);
 		jedis.close();
 		return result;
@@ -81,6 +87,7 @@ public class JedisClientImpl implements JedisClient{
 	//删除hash中的某一元素
 	public long hdel(String hkey, String key) {
 		Jedis jedis = jedisPool.getResource();
+		jedis.auth("foobared");
 		Long result = jedis.hdel(hkey, key);
 		jedis.close();
 		return result;

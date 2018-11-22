@@ -648,3 +648,23 @@ Caused by: java.net.ConnectException: Connection timed out: connect
 [WARN] [2018-11-22 21:16:12][org.mybatis.spring.mapper.ClassPathMapperScanner]Skipping MapperFactoryBean with name 'jedisClient' and 'com.cmcc.dao.JedisClient' mapperInterface. Bean already defined with the same name!
 [INFO] [2018-11-22 21:16:12][org.springframework.beans.factory.config.PropertyPlaceholderConfigurer]Loading properties file from class path resource [jdbc.properties]
 [INFO] [2018-11-22 21:16:13][org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor]JSR-330 'javax.inject.Inject' annotation found and supported for autowiring
+[INFO] [2018-11-23 04:24:01][org.springframework.context.support.ClassPathXmlApplicationContext]Refreshing org.springframework.context.support.ClassPathXmlApplicationContext@7c30a502: startup date [Fri Nov 23 04:24:01 CST 2018]; root of context hierarchy
+[INFO] [2018-11-23 04:24:01][org.springframework.beans.factory.xml.XmlBeanDefinitionReader]Loading XML bean definitions from class path resource [spring-mybatis.xml]
+[WARN] [2018-11-23 04:24:02][org.mybatis.spring.mapper.ClassPathMapperScanner]Skipping MapperFactoryBean with name 'jedisClient' and 'com.cmcc.dao.JedisClient' mapperInterface. Bean already defined with the same name!
+[INFO] [2018-11-23 04:24:02][org.springframework.beans.factory.config.PropertyPlaceholderConfigurer]Loading properties file from class path resource [jdbc.properties]
+[INFO] [2018-11-23 04:24:02][org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor]JSR-330 'javax.inject.Inject' annotation found and supported for autowiring
+[INFO] [2018-11-23 04:28:46][org.springframework.context.support.ClassPathXmlApplicationContext]Refreshing org.springframework.context.support.ClassPathXmlApplicationContext@7c30a502: startup date [Fri Nov 23 04:28:46 CST 2018]; root of context hierarchy
+[INFO] [2018-11-23 04:28:46][org.springframework.beans.factory.xml.XmlBeanDefinitionReader]Loading XML bean definitions from class path resource [spring-mybatis.xml]
+[WARN] [2018-11-23 04:28:48][org.mybatis.spring.mapper.ClassPathMapperScanner]Skipping MapperFactoryBean with name 'jedisClient' and 'com.cmcc.dao.JedisClient' mapperInterface. Bean already defined with the same name!
+[INFO] [2018-11-23 04:28:48][org.springframework.beans.factory.config.PropertyPlaceholderConfigurer]Loading properties file from class path resource [jdbc.properties]
+[INFO] [2018-11-23 04:28:48][org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor]JSR-330 'javax.inject.Inject' annotation found and supported for autowiring
+[INFO] [2018-11-23 04:29:22][org.springframework.context.support.ClassPathXmlApplicationContext]Refreshing org.springframework.context.support.ClassPathXmlApplicationContext@7c30a502: startup date [Fri Nov 23 04:29:22 CST 2018]; root of context hierarchy
+[INFO] [2018-11-23 04:29:22][org.springframework.beans.factory.xml.XmlBeanDefinitionReader]Loading XML bean definitions from class path resource [spring-mybatis.xml]
+[WARN] [2018-11-23 04:29:24][org.mybatis.spring.mapper.ClassPathMapperScanner]Skipping MapperFactoryBean with name 'jedisClient' and 'com.cmcc.dao.JedisClient' mapperInterface. Bean already defined with the same name!
+[INFO] [2018-11-23 04:29:24][org.springframework.beans.factory.config.PropertyPlaceholderConfigurer]Loading properties file from class path resource [jdbc.properties]
+[INFO] [2018-11-23 04:29:24][org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor]JSR-330 'javax.inject.Inject' annotation found and supported for autowiring
+[INFO] [2018-11-23 04:31:23][org.springframework.context.support.ClassPathXmlApplicationContext]Refreshing org.springframework.context.support.ClassPathXmlApplicationContext@7c30a502: startup date [Fri Nov 23 04:31:23 CST 2018]; root of context hierarchy
+[INFO] [2018-11-23 04:31:23][org.springframework.beans.factory.xml.XmlBeanDefinitionReader]Loading XML bean definitions from class path resource [spring-mybatis.xml]
+[WARN] [2018-11-23 04:31:24][org.mybatis.spring.mapper.ClassPathMapperScanner]Skipping MapperFactoryBean with name 'jedisClient' and 'com.cmcc.dao.JedisClient' mapperInterface. Bean already defined with the same name!
+[INFO] [2018-11-23 04:31:24][org.springframework.beans.factory.config.PropertyPlaceholderConfigurer]Loading properties file from class path resource [jdbc.properties]
+[INFO] [2018-11-23 04:31:24][org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor]JSR-330 'javax.inject.Inject' annotation found and supported for autowiring

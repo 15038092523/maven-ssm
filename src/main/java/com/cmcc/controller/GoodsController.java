@@ -1,4 +1,7 @@
 package com.cmcc.controller;
+
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -18,53 +21,72 @@ import com.cmcc.service.GoodsService;
 @Controller
 @RequestMapping("/goods")
 public class GoodsController {
-	
+
 	@Autowired
 	private GoodsService goodsService;
-	
+
 	@RequestMapping("/getEntity")
-	public String getEntity(Integer id,HttpServletRequest request){
+	public String getEntity(Integer id, HttpServletRequest request) {
 		Sku sku = goodsService.getEntity(id);
-		HttpSession session=request.getSession();
+		HttpSession session = request.getSession();
 		session.setAttribute("currentUser", sku);
 		return "success";
-		}
-	
+	}
+
 	@RequestMapping("/getEntityJson")
 	@ResponseBody
-	public Sku getEntityJson(Integer id,HttpServletRequest request){
+	public Sku getEntityJson(Integer id, HttpServletRequest request) {
 		Sku sku = goodsService.getEntity(id);
 		return sku;
-		}
-	
+	}
+
 	@RequestMapping("/update")
 	@ResponseBody
-	public Map<String,Object> updateGoods(Sku sku){
-		Map<String,Object> map = new HashMap<String, Object>();
+	public Map<String, Object> updateGoods(Sku sku) {
+		Map<String, Object> map = new HashMap<String, Object>();
 		goodsService.updateSku(sku);
 		map.put("status", 200);
 		return map;
 	}
-	
+
 	@RequestMapping("/deleteGoods")
 	@ResponseBody
-	public Map<String,Object> deleteGoods(Integer id){
-		Map<String,Object> map = new HashMap<String, Object>();
+	public Map<String, Object> deleteGoods(Integer id) {
+		Map<String, Object> map = new HashMap<String, Object>();
 		int result = goodsService.deleteGoods(id);
 		map.put("status", 200);
-		if(result == 0){
+		if (result == 0) {
 			map.put("message", "数据不存在");
-		}else{
-		map.put("message", "已删除id为"+id+"的数据,共"+result+"条");
+		} else {
+			map.put("message", "已删除id为" + id + "的数据,共" + result + "条");
 		}
 		return map;
 	}
-	
+
+	@RequestMapping("/deleteGoodsList")
+	@ResponseBody
+	public Map<String, Object> deleteGoodsList(String ids) {
+		Map<String, Object> map = new HashMap<String, Object>();
+		if (ids != null && !"".equals(ids)) {
+			List<String> sList = Arrays.asList(ids.split(","));
+			List<Integer> list = new ArrayList<Integer>();
+			for (String str : sList) {
+				int i = Integer.parseInt(str);
+				list.add(i);
+			}
+			 goodsService.deleteGoodsList(list);
+			
+		}
+		map.put("status", 200);
+		return map;
+	}
+
 	@RequestMapping("/getAll")
 	@ResponseBody
-	public Map<String,Object> getAllGoods(@RequestParam(value="page", defaultValue="1")int page,@RequestParam(value="rows", defaultValue="3")int rows){
-		Map<String,Object> map = new HashMap<String, Object>();
-		List list = goodsService.getAll(PageUtil.getStartPage(page,rows),rows);
+	public Map<String, Object> getAllGoods(@RequestParam(value = "page", defaultValue = "1") int page,
+			@RequestParam(value = "rows", defaultValue = "3") int rows) {
+		Map<String, Object> map = new HashMap<String, Object>();
+		List list = goodsService.getAll(PageUtil.getStartPage(page, rows), rows);
 		map.put("status", 200);
 		map.put("data", list);
 		return map;

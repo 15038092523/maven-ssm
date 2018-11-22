@@ -1,5 +1,8 @@
 package goods.test;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.junit.Test;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
@@ -31,6 +34,16 @@ public class GoodsTest {
 		ApplicationContext ctx = new ClassPathXmlApplicationContext("spring-mybatis.xml");
 		GoodsService goodsService = (GoodsService) ctx.getBean("goodsService");
 		System.out.println(goodsService.deleteGoods(12));
+	}
+	
+	@Test
+	public void deleteGoodsListTest() {
+		ApplicationContext ctx = new ClassPathXmlApplicationContext("spring-mybatis.xml");
+		GoodsService goodsService = (GoodsService) ctx.getBean("goodsService");
+		List<Integer> list = new ArrayList<Integer>();
+		list.add(12);
+		list.add(13);
+		System.out.println(goodsService.deleteGoodsList(list));
 	}
 
 	@Test
