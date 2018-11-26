@@ -8,6 +8,9 @@ public class Sku {
 	private Integer size;
 	private String color;
 	private Double price;
+	private Integer version;
+	private Integer status;
+	private Integer deleteStatus;
 	public Integer getId() {
 		return id;
 	}
@@ -45,6 +48,24 @@ public class Sku {
 	}
 	public void setPrice(Double price) {
 		this.price = price;
+	}
+	public Integer getVersion() {
+		return version;
+	}
+	public void setVersion(Integer version) {
+		this.version = version;
+	}
+	public Integer getStatus() {
+		return status;
+	}
+	public void setStatus(Integer status) {
+		this.status = status;
+	}
+	public Integer getDeleteStatus() {
+		return deleteStatus;
+	}
+	public void setDeleteStatus(Integer deleteStatus) {
+		this.deleteStatus = deleteStatus;
 	}
 	
 }

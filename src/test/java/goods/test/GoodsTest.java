@@ -105,4 +105,11 @@ public class GoodsTest {
 		jedisClient.set("321", "321");
 		System.out.println(jedisClient.get("321"));
 	}
+	
+	@Test
+	public void testSelect() {
+		ApplicationContext ctx = new ClassPathXmlApplicationContext("spring-mybatis.xml");
+		GoodsService goodsService = (GoodsService) ctx.getBean("goodsService");
+		System.out.println(goodsService.getEntity(1));
+	}
 }
