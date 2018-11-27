@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>粗糙的项目挡板</title>
+<title>商品中心相关功能测试</title>
 <!-- Javascript goes in the document HEAD -->
 <script type="text/javascript">
 	function altRows(id) {
