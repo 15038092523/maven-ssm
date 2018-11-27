@@ -1,4 +1,4 @@
-package goods.test;
+package cmcc.test;
 
 import java.util.ArrayList;
 import java.util.List;

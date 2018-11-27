@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.cmcc.dao.AccountDao">
+
+	<resultMap id="resultMap" type="Account">
+		<id property="id" column="id" />
+		<result property="userId" column="user_id" />
+		<result property="createDate" column="create_date" />
+		<result property="updateDate" column="update_date" />
+		<result property="version" column="version" />
+		<result property="userAmount" column="user_amount" />
+		<result property="payPassword" column="pay_password" />
+		<result property="isOpen" column="is_open" />
+	</resultMap>
+
+	<!--通过用户唯一编号，查询用户钱包相关的信息 -->
+	<select id="selectByOpenId" resultMap="resultMap" parameterType="java.lang.String">
+		select *
+		<!-- <include refid="Base_Column_List" /> -->
+		from account
+		where user_id = #{userId,jdbcType=VARCHAR}
+	</select>
+
+	<!--用户钱包数据更改 ，通过乐观锁(version机制)实现 -->
+	<update id="updateAccountWallet" parameterType="Account">
+        update account 
+        set user_amount = #{userAmount,jdbcType=DECIMAL}, version = version + 1 
+        where id = #{id,jdbcType=INTEGER} and version = #{version,jdbcType=INTEGER} 
+	</update>
+</mapper> 

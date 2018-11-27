@@ -1,4 +1,4 @@
-package goods.test;
+package cmcc.test;
 
 import org.junit.Test;
 import org.springframework.context.ApplicationContext;
