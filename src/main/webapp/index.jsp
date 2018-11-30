@@ -164,11 +164,16 @@ table.altrowstable td {
 						amount: <input type="text" name="amount" id="amount" /><br>
 						<input type="submit" value="确认" align="center" />
 					</form> <br></td>
-				<td><form
-						action="${pageContext.request.contextPath }/goods/getEntityJson.do"
+				<td><font>分页多条件查询商品信息</font>
+					<form
+						action="${pageContext.request.contextPath }/goods/getAllByParam.do"
 						method="post">
-						商品json : <input type="text" name="id" id="cid" /><br /> <input
-							type="submit" value="查询" />
+						page: <input type="text" name="page" /><br> rows: <input
+							type="text" name="rows" /><br> brand: <input type="text"
+							name="brand" /><br> name: <input type="text" name="name" /><br>
+						simpleName: <input type="text" name="simpleName" /><br>
+						color: <input type="text" name="color" /><br> <input
+							type="submit" value="查询" align="center" />
 					</form> <br></td>
 			</tr>
 		</table>

@@ -11,4 +11,5 @@ public interface AccountDao {
 	Account selectAccount(String openId);
 	
 	Integer updateAccount(Account account);
+	
 }

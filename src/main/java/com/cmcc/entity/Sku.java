@@ -4,13 +4,15 @@ public class Sku {
 
 	private Integer id;
 	private String name;
-	private Item item;
+	private Item item = new Item();
 	private Integer size;
 	private String color;
 	private Double price;
 	private Integer version;
 	private Integer status;
 	private Integer deleteStatus;
+	private Integer startPage;
+	private  Integer rows;
 	public Integer getId() {
 		return id;
 	}
@@ -66,6 +68,18 @@ public class Sku {
 	}
 	public void setDeleteStatus(Integer deleteStatus) {
 		this.deleteStatus = deleteStatus;
+	}
+	public Integer getStartPage() {
+		return startPage;
+	}
+	public void setStartPage(Integer startPage) {
+		this.startPage = startPage;
+	}
+	public Integer getRows() {
+		return rows;
+	}
+	public void setRows(Integer rows) {
+		this.rows = rows;
 	}
 	
 }

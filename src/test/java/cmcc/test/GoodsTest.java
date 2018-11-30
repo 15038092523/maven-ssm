@@ -112,4 +112,16 @@ public class GoodsTest {
 		GoodsService goodsService = (GoodsService) ctx.getBean("goodsService");
 		System.out.println(goodsService.getEntity(1));
 	}
+	
+	@Test
+	public void testgetAllByParam() {
+		ApplicationContext ctx = new ClassPathXmlApplicationContext("spring-mybatis.xml");
+		GoodsService goodsService = (GoodsService) ctx.getBean("goodsService");
+		Sku sku = new Sku();
+		sku.setColor("褐色");
+		sku.setName("波导230");
+		sku.getItem().setSimpleName("手机");
+		sku.getItem().setBrand("波导");
+		System.out.println(goodsService.getAllByParam(sku).size());
+	}
 }

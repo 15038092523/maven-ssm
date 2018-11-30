@@ -91,4 +91,39 @@ public class GoodsController {
 		map.put("data", list);
 		return map;
 	}
+	
+	@RequestMapping("/getAllByParam")
+	@ResponseBody
+	public Map<String, Object> getAllGoodsByParam(HttpServletRequest request) {
+		Map<String, Object> map = new HashMap<String, Object>();
+		List<Sku> list = goodsService.getAllByParam(fillQueryParam(request));
+		map.put("status", 200);
+		map.put("data", list);
+		return map;
+	}
+	
+	private Sku fillQueryParam(HttpServletRequest request){
+		
+		Sku sku = new Sku();
+		String color = request.getParameter("color") == null? null:request.getParameter("color").trim();
+		String name = request.getParameter("name") == null? null:request.getParameter("name").trim();
+		String simpleName = request.getParameter("simpleName") == null? null:request.getParameter("simpleName").trim();
+		String brand = request.getParameter("brand") == null? null:request.getParameter("brand").trim();
+		Integer page = 1,rows =10;
+		if(request.getParameter("page") != null &&request.getParameter("page") != ""){
+			page = Integer.valueOf(request.getParameter("page").trim());
+		}
+		if(request.getParameter("rows") != null &&request.getParameter("rows") != ""){
+			rows = Integer.valueOf(request.getParameter("rows").trim());
+		}
+		sku.setColor(color);
+		sku.setName(name);
+		sku.getItem().setBrand(brand);
+		sku.getItem().setSimpleName(simpleName);
+		sku.setRows(rows);
+		sku.setStartPage(PageUtil.getStartPage(page, rows));
+		return sku;
+		
+	}
+	
 }

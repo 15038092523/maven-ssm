@@ -83,4 +83,10 @@ public class GoodsServiceImpl implements GoodsService {
 		return null;
 	}
 
+	public List<Sku> getAllByParam(Sku sku) {
+		// TODO Auto-generated method stub
+		
+		return goodsDao.getAllByParam(sku);
+	}
+
 }
