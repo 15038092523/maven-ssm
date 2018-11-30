@@ -22,4 +22,16 @@ public class AccountServiceImpl implements AccountService{
 		return accountDao.updateAccountWallet(account);
 	}
 
+	public Integer updateAccount(String openId,String openType,Double amount) {
+		// TODO Auto-generated method stub
+		Account account = accountDao.selectAccount(openId);
+		if (Integer.parseInt(openType) == 1) {
+			account.setUserAmount(account.getUserAmount()+amount);
+		} else if (Integer.parseInt(openType) == 2) {
+			account.setUserAmount(account.getUserAmount()-amount);
+		}
+		Integer result = accountDao.updateAccount(account);
+		return result;
+	}
+
 }

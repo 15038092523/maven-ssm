@@ -936,3 +936,20 @@ Caused by: java.net.ConnectException: Connection timed out: connect
 [INFO] [2018-11-28 04:49:30][org.springframework.context.support.PostProcessorRegistrationDelegate$BeanPostProcessorChecker]Bean 'myScheduler' of type [class org.springframework.scheduling.concurrent.ThreadPoolTaskScheduler] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
 [INFO] [2018-11-28 04:49:32][cmcc.test.AccountTest]1
 [INFO] [2018-11-28 04:49:32][cmcc.test.AccountTest]1
+[INFO] [2018-11-28 11:17:06][cmcc.test.JsonTest]{"id":2,"name":null,"item":null,"size":null,"color":"1","price":null,"version":null,"status":null,"deleteStatus":null}
+[INFO] [2018-11-28 11:19:13][cmcc.test.JsonTest]{"id":2,"name":null,"item":null,"size":null,"color":"1","price":null,"version":null,"status":null,"deleteStatus":null}
+[INFO] [2018-11-28 11:19:13][cmcc.test.JsonTest]com.cmcc.entity.Sku@4d50efb8
+[INFO] [2018-11-30 13:13:26][org.springframework.context.support.ClassPathXmlApplicationContext]Refreshing org.springframework.context.support.ClassPathXmlApplicationContext@511baa65: startup date [Fri Nov 30 13:13:26 CST 2018]; root of context hierarchy
+[INFO] [2018-11-30 13:13:26][org.springframework.beans.factory.xml.XmlBeanDefinitionReader]Loading XML bean definitions from class path resource [spring-mybatis.xml]
+[INFO] [2018-11-30 13:13:29][org.springframework.beans.factory.config.PropertyPlaceholderConfigurer]Loading properties file from class path resource [jdbc.properties]
+[INFO] [2018-11-30 13:13:29][org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor]JSR-330 'javax.inject.Inject' annotation found and supported for autowiring
+[INFO] [2018-11-30 13:13:29][org.springframework.scheduling.concurrent.ThreadPoolTaskScheduler]Initializing ExecutorService  'myScheduler'
+[INFO] [2018-11-30 13:13:29][org.springframework.context.support.PostProcessorRegistrationDelegate$BeanPostProcessorChecker]Bean 'myScheduler' of type [class org.springframework.scheduling.concurrent.ThreadPoolTaskScheduler] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+[INFO] [2018-11-30 13:13:30][cmcc.test.AccountTest]1
+[INFO] [2018-11-30 13:22:12][org.springframework.context.support.ClassPathXmlApplicationContext]Refreshing org.springframework.context.support.ClassPathXmlApplicationContext@511baa65: startup date [Fri Nov 30 13:22:12 CST 2018]; root of context hierarchy
+[INFO] [2018-11-30 13:22:12][org.springframework.beans.factory.xml.XmlBeanDefinitionReader]Loading XML bean definitions from class path resource [spring-mybatis.xml]
+[INFO] [2018-11-30 13:22:15][org.springframework.beans.factory.config.PropertyPlaceholderConfigurer]Loading properties file from class path resource [jdbc.properties]
+[INFO] [2018-11-30 13:22:15][org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor]JSR-330 'javax.inject.Inject' annotation found and supported for autowiring
+[INFO] [2018-11-30 13:22:15][org.springframework.scheduling.concurrent.ThreadPoolTaskScheduler]Initializing ExecutorService  'myScheduler'
+[INFO] [2018-11-30 13:22:15][org.springframework.context.support.PostProcessorRegistrationDelegate$BeanPostProcessorChecker]Bean 'myScheduler' of type [class org.springframework.scheduling.concurrent.ThreadPoolTaskScheduler] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+[INFO] [2018-11-30 13:22:16][cmcc.test.AccountTest]1

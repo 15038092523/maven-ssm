@@ -155,11 +155,14 @@ table.altrowstable td {
 						amount: <input type="text" name="amount" id="amount" /><br>
 						<input type="submit" value="确认" align="center" />
 					</form> <br></td>
-				<td><form
-						action="${pageContext.request.contextPath }/goods/getEntityJson.do"
+				<td><font>悲观锁实现转账</font>
+					<form
+						action="${pageContext.request.contextPath }/account/update.do"
 						method="post">
-						商品json : <input type="text" name="id" id="cid" /><br /> <input
-							type="submit" value="查询" />
+						openId: <input type="text" name="openId" id="openId" /><br>
+						openType: <input type="text" name="openType" id="openType" /><br>
+						amount: <input type="text" name="amount" id="amount" /><br>
+						<input type="submit" value="确认" align="center" />
 					</form> <br></td>
 				<td><form
 						action="${pageContext.request.contextPath }/goods/getEntityJson.do"

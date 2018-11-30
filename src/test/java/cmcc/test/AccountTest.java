@@ -20,4 +20,12 @@ public class AccountTest {
 		account.setPayPassword("2");
 		logger.info(accountService.updateAccountWallet(account)+"");
 	}
+	
+	@Test
+	public void update(){
+		ApplicationContext ctx = new ClassPathXmlApplicationContext("spring-mybatis.xml");
+		AccountService accountService = (AccountService) ctx.getBean("accountService");
+		Integer i = accountService.updateAccount("1","1",36.0);
+		logger.info(i+"");
+	}
 }

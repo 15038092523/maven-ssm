@@ -67,4 +67,44 @@ public class AccountController {
 
 		return "success";
 	}
+	
+	/**
+	 * 针对业务系统高并发-----修改用户钱包数据余额，采用乐观锁
+	 */
+	@RequestMapping(value = "/update")
+	@ResponseBody
+	public String updateAccount(String openId,String openType,String amount) {
+
+		String result = "";
+
+		try {
+			// 用户唯一编号
+			 openId = openId == null ? null :openId.trim();
+			// 1:代表增加，2：代表减少
+			 openType = openType == null ? null : openType.trim();
+			// 金额
+			 amount = amount == null ? null : amount.trim();
+
+			if (StringUtils.isEmpty(openId)) {
+				return "openId is null";
+			}
+			if (StringUtils.isEmpty(openType)) {
+				return "openType is null";
+			}
+			if (StringUtils.isEmpty(amount)) {
+				return "amount is null";
+			}
+			Double cash =Double.parseDouble(amount);
+			// 用户操作金额
+			int target = accountService.updateAccount(openId,openType,cash);
+			logger.info("修改用户金额是否：" + (target == 1 ? "成功" : "失败"));
+
+		} catch (Exception e) {
+			e.printStackTrace();
+			result = e.getMessage();
+			return result;
+		}
+
+		return "success";
+	}
 }

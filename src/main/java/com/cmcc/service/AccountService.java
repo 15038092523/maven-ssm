@@ -7,4 +7,6 @@ public interface AccountService {
 	Account selectByOpenId(String openId);
 
 	Integer updateAccountWallet(Account account);
+	
+	Integer updateAccount(String openId,String openType,Double amount);
 }
