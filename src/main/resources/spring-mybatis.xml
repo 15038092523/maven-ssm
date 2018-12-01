@@ -20,7 +20,8 @@
 		class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
 		<property name="location" value="classpath:jdbc.properties" />
 	</bean>
-
+	
+	<!-- 数据源1配置 -->
 	<bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource"
 		destroy-method="close">
 		<property name="driverClassName" value="${driver}" />
@@ -38,10 +39,41 @@
 		<!-- 获取连接最大等待时间 -->
 		<property name="maxWait" value="${maxWait}"></property>
 	</bean>
+	
+	<!-- 数据源2配置 -->
+	<bean id="dataSource2" class="org.apache.commons.dbcp.BasicDataSource"
+		destroy-method="close">
+		<property name="driverClassName" value="${driver}" />
+		<property name="url" value="${url2}" />
+		<property name="username" value="${username}" />
+		<property name="password" value="${password}" />
+		<!-- 初始化连接大小 -->
+		<property name="initialSize" value="${initialSize}"></property>
+		<!-- 连接池最大数量 -->
+		<property name="maxActive" value="${maxActive}"></property>
+		<!-- 连接池最大空闲 -->
+		<property name="maxIdle" value="${maxIdle}"></property>
+		<!-- 连接池最小空闲 -->
+		<property name="minIdle" value="${minIdle}"></property>
+		<!-- 获取连接最大等待时间 -->
+		<property name="maxWait" value="${maxWait}"></property>
+	</bean>
+	
+	 <bean id="dynamicDataSource" class="com.cmcc.common.DynamicDataSource">  
+         <property name="targetDataSources">  
+             <map key-type="java.lang.String">
+                 <!-- 指定lookupKey和与之对应的数据源 -->
+                 <entry key="dataSource" value-ref="dataSource"></entry>  
+                 <entry key="dataSource2" value-ref="dataSource2"></entry>  
+             </map>  
+         </property>
+         <!-- 默认数据源 -->
+         <property name="defaultTargetDataSource" ref="dataSource" /> 
+     </bean>
 
 	<!-- spring和MyBatis整合，不需要mybatis的配置映射文件 -->
 	<bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
-		<property name="dataSource" ref="dataSource" />
+		<property name="dataSource" ref="dynamicDataSource" />
 		<!-- 自动扫描mapping.xml文件 -->
 		<property name="mapperLocations" value="classpath:com/cmcc/mapping/*.xml"></property>
 		<!-- mybatis配置文件 -->
@@ -53,6 +85,17 @@
 		<property name="basePackage" value="com.cmcc.dao" />
 		<property name="sqlSessionFactoryBeanName" value="sqlSessionFactory"></property>
 	</bean>
+	
+	<!-- 数据源切换注解 -->
+	<bean id="dataSourceAspect" class="com.cmcc.common.DataSourceAspect" />
+    <aop:config>
+        <aop:aspect ref="dataSourceAspect">
+            <!-- 拦截所有service方法 -->
+            <aop:pointcut id="dataSourcePointcut" expression="execution(* com.cmcc.service.impl.*ServiceImpl.*(..))"/>
+            <aop:before pointcut-ref="dataSourcePointcut" method="intercept" />
+        </aop:aspect>
+    </aop:config>
+	
 
 	<!-- (事务管理)transaction manager, use JtaTransactionManager for global tx -->
 	<bean id="transactionManager"
