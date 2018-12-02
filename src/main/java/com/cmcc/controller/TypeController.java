@@ -7,6 +7,7 @@ import java.util.Map;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.cmcc.entity.Type;
@@ -20,7 +21,7 @@ public class TypeController {
 
 	@RequestMapping("/getList")
 	@ResponseBody
-	public Map<String,Object> getList(Integer id) {
+	public Map<String,Object> getList(@RequestParam(value="id",defaultValue="0")Integer id) {
 		Map<String,Object> map = new HashMap<String, Object>();
 		List<Type> list = typeService.getList(id);
 		map.put("status", 200);

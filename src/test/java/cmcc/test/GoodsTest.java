@@ -122,6 +122,9 @@ public class GoodsTest {
 		sku.setName("波导230");
 		sku.getItem().setSimpleName("手机");
 		sku.getItem().setBrand("波导");
+		sku.setStartPage(0);
+		sku.setRows(19);
 		System.out.println(goodsService.getAllByParam(sku).size());
+		System.out.println(goodsService.getTotal(sku));
 	}
 }

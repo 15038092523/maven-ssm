@@ -94,9 +94,9 @@ table.altrowstable td {
 							type="submit" value="查询" />
 					</form> <br></td>
 				<td><form
-						action="${pageContext.request.contextPath }/goods/getEntityJson.do"
+						action="${pageContext.request.contextPath }/type/getList.do"
 						method="post">
-						商品json : <input type="text" name="id" id="cid" /><br /> <input
+						商品类目查询 : <input type="text" name="id" id="id" /><br /> <input
 							type="submit" value="查询" />
 					</form> <br></td>
 			</tr>

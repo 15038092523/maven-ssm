@@ -97,4 +97,9 @@ public class GoodsServiceImpl implements GoodsService {
 		return goodsDao.getAllByParam(sku);
 	}
 
+	public Integer getTotal(Sku sku) {
+		// TODO Auto-generated method stub
+		return goodsDao.getTotal(sku);
+	}
+
 }

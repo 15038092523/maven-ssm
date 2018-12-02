@@ -97,8 +97,10 @@ public class GoodsController {
 	public Map<String, Object> getAllGoodsByParam(HttpServletRequest request) {
 		Map<String, Object> map = new HashMap<String, Object>();
 		List<Sku> list = goodsService.getAllByParam(fillQueryParam(request));
+		Integer total =  goodsService.getTotal(fillQueryParam(request));
 		map.put("status", 200);
 		map.put("data", list);
+		map.put("total", total);
 		return map;
 	}
 	

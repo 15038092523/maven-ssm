@@ -45,21 +45,43 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		SELECT
 		s.id,s.name,s.price,s.size,s.color,i.brand,i.name,i.simple_name
 		FROM sku s LEFT JOIN item i ON s.item_id=i.id WHERE
-		s.delete_status = 0 and s.status = 0
+		s.delete_status = 0
+		and s.status = 0
 		<if test="sku.color != null and sku.color != ''">
-            and s.color = #{sku.color}
-        </if>
-        <if test="sku.name != null and sku.name != ''">
-            and s.name like #{sku.name}
-        </if>
-        <if test="sku.item.simpleName != null and sku.item.simpleName != ''">
-            and i.simple_name = #{sku.item.simpleName}
-        </if>
-        <if test="sku.item.brand != null and sku.item.brand != ''">
-            and i.brand = #{sku.item.brand}
-        </if>
-		order by s.id   limit #{sku.startPage},#{sku.rows}
+			and s.color = #{sku.color}
+		</if>
+		<if test="sku.name != null and sku.name != ''">
+			and s.name like #{sku.name}
+		</if>
+		<if test="sku.item.simpleName != null and sku.item.simpleName != ''">
+			and i.simple_name = #{sku.item.simpleName}
+		</if>
+		<if test="sku.item.brand != null and sku.item.brand != ''">
+			and i.brand = #{sku.item.brand}
+		</if>
+		order by s.id limit #{sku.startPage},#{sku.rows}
 	</select>
+
+	<select id="getTotal" resultType="Integer">
+		SELECT  count(*)
+		FROM sku s LEFT JOIN item i ON s.item_id=i.id WHERE
+		s.delete_status = 0
+		and s.status = 0
+		<if test="sku.color != null and sku.color != ''">
+			and s.color = #{sku.color}
+		</if>
+		<if test="sku.name != null and sku.name != ''">
+			and s.name like #{sku.name}
+		</if>
+		<if test="sku.item.simpleName != null and sku.item.simpleName != ''">
+			and i.simple_name = #{sku.item.simpleName}
+		</if>
+		<if test="sku.item.brand != null and sku.item.brand != ''">
+			and i.brand = #{sku.item.brand}
+		</if>
+	</select>
+
+
 
 	<update id="updateSku" parameterType="Sku">
 		update sku set

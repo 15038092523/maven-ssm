@@ -19,4 +19,6 @@ public interface GoodsDao {
 	Integer deleteGoodsList(List<Integer> list);
 
 	List<Sku> getAllByParam(@Param("sku")Sku sku);
+
+	Integer getTotal(@Param("sku")Sku sku);
 }

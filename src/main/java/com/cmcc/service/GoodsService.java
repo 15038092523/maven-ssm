@@ -17,4 +17,6 @@ public interface GoodsService {
 	Integer deleteGoodsList(List<Integer> list);
 	
 	List<Sku> getAllByParam(Sku sku);
+	
+	Integer getTotal(Sku sku);
 }
