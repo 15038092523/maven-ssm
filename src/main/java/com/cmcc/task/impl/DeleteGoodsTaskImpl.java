@@ -14,7 +14,14 @@ public class DeleteGoodsTaskImpl implements DeleteGoodsTask{
 	
 	@Scheduled(cron="0/10 * *  * * ? ") 
 	public void delete() {
-		System.out.println("delete方法执行,删除"+goodsService.deleteGoods(12)+"条数据。");
+		//System.out.println("delete方法执行,删除"+goodsService.deleteGoods(12)+"条数据。");
+	}
+	
+	@Scheduled(cron="0/10 * *  * * ? ") 
+	public void select() {
+		for (int i=1; i<12;i++ ) {
+			//System.out.println("查询id为"+i+"的商品信息，商品名称是"+goodsService.getEntity(i).getName());
+		}
 	}
 
 }

@@ -189,11 +189,35 @@
 			<version>2.6</version>
 		</dependency>
 
+		<!--activemq -->
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-jms</artifactId>
+			<version>${spring.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.activemq</groupId>
+			<artifactId>activemq-core</artifactId>
+			<version>5.7.0</version>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.activemq</groupId>
+			<artifactId>activemq-pool</artifactId>
+			<version>5.12.2</version>
+		</dependency>
+
+		<!-- xbean 如<amq:connectionFactory /> 此次配置主要是因为配置文件中可能读取不到amq标签 -->
+		<dependency>
+			<groupId>org.apache.xbean</groupId>
+			<artifactId>xbean-spring</artifactId>
+			<version>4.5</version>
+		</dependency>
+
 		<!-- 上传组件包 end -->
 	</dependencies>
 	<build>
 		<finalName>ol</finalName>
-<!-- maven打包时不过滤mapper -->
+		<!-- maven打包时不过滤mapper -->
 		<resources>
 			<resource>
 				<directory>src/main/java</directory>

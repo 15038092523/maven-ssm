@@ -1,7 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<beans xmlns="http://www.springframework.org/schema/beans" xmlns:task="http://www.springframework.org/schema/task"
-	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:context="http://www.springframework.org/schema/context"
-	xmlns:mvc="http://www.springframework.org/schema/mvc" xmlns:aop="http://www.springframework.org/schema/aop"
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:task="http://www.springframework.org/schema/task" 
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:mvc="http://www.springframework.org/schema/mvc" 
+	xmlns:aop="http://www.springframework.org/schema/aop"
 	xmlns:tx="http://www.springframework.org/schema/tx"
 	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.2.xsd
         http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-4.0.xsd  
@@ -20,7 +23,7 @@
 		class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
 		<property name="location" value="classpath:jdbc.properties" />
 	</bean>
-	
+
 	<!-- 数据源1配置 -->
 	<bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource"
 		destroy-method="close">
@@ -39,7 +42,7 @@
 		<!-- 获取连接最大等待时间 -->
 		<property name="maxWait" value="${maxWait}"></property>
 	</bean>
-	
+
 	<!-- 数据源2配置 -->
 	<bean id="dataSource2" class="org.apache.commons.dbcp.BasicDataSource"
 		destroy-method="close">
@@ -58,18 +61,18 @@
 		<!-- 获取连接最大等待时间 -->
 		<property name="maxWait" value="${maxWait}"></property>
 	</bean>
-	
-	 <bean id="dynamicDataSource" class="com.cmcc.common.DynamicDataSource">  
-         <property name="targetDataSources">  
-             <map key-type="java.lang.String">
-                 <!-- 指定lookupKey和与之对应的数据源 -->
-                 <entry key="dataSource" value-ref="dataSource"></entry>  
-                 <entry key="dataSource2" value-ref="dataSource2"></entry>  
-             </map>  
-         </property>
-         <!-- 默认数据源 -->
-         <property name="defaultTargetDataSource" ref="dataSource" /> 
-     </bean>
+
+	<bean id="dynamicDataSource" class="com.cmcc.common.DynamicDataSource">
+		<property name="targetDataSources">
+			<map key-type="java.lang.String">
+				<!-- 指定lookupKey和与之对应的数据源 -->
+				<entry key="dataSource" value-ref="dataSource"></entry>
+				<entry key="dataSource2" value-ref="dataSource2"></entry>
+			</map>
+		</property>
+		<!-- 默认数据源 -->
+		<property name="defaultTargetDataSource" ref="dataSource" />
+	</bean>
 
 	<!-- spring和MyBatis整合，不需要mybatis的配置映射文件 -->
 	<bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
@@ -85,17 +88,18 @@
 		<property name="basePackage" value="com.cmcc.dao" />
 		<property name="sqlSessionFactoryBeanName" value="sqlSessionFactory"></property>
 	</bean>
-	
+
 	<!-- 数据源切换注解 -->
 	<bean id="dataSourceAspect" class="com.cmcc.common.DataSourceAspect" />
-    <aop:config>
-        <aop:aspect ref="dataSourceAspect">
-            <!-- 拦截所有service方法 -->
-            <aop:pointcut id="dataSourcePointcut" expression="execution(* com.cmcc.service.impl.*ServiceImpl.*(..))"/>
-            <aop:before pointcut-ref="dataSourcePointcut" method="intercept" />
-        </aop:aspect>
-    </aop:config>
-	
+	<aop:config>
+		<aop:aspect ref="dataSourceAspect">
+			<!-- 拦截所有service方法 -->
+			<aop:pointcut id="dataSourcePointcut"
+				expression="execution(* com.cmcc.service.impl.*ServiceImpl.*(..))" />
+			<aop:before pointcut-ref="dataSourcePointcut" method="intercept" />
+		</aop:aspect>
+	</aop:config>
+
 
 	<!-- (事务管理)transaction manager, use JtaTransactionManager for global tx -->
 	<bean id="transactionManager"
@@ -129,11 +133,11 @@
 		<aop:pointcut id="serviceOperation" expression="execution(* com.cmcc.service.*.*(..))" />
 		<aop:advisor advice-ref="txAdvice" pointcut-ref="serviceOperation" />
 	</aop:config>
-	
+
 	<!-- 启用注解驱动的定时任务 -->
-	<task:annotation-driven scheduler="myScheduler"/> 
+	<task:annotation-driven scheduler="myScheduler" />
 	<!-- 配置定时任务的线程池 -->
-	<task:scheduler id="myScheduler" pool-size="5"/>
-	
-	
+	<task:scheduler id="myScheduler" pool-size="5" />
+
+
 </beans>

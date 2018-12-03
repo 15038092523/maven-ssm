@@ -119,10 +119,10 @@ table.altrowstable td {
 							type="submit" value="查询" align="center" />
 					</form> <br></td>
 				<td><form
-						action="${pageContext.request.contextPath }/goods/getEntityJson.do"
-						method="post">
-						商品json : <input type="text" name="id" id="cid" /><br /> <input
-							type="submit" value="查询" />
+						action="${pageContext.request.contextPath }/jms/sendMessage.do"
+						method="get">
+						消息 : <input type="text" name="msg" id="msg" /><br /> <input
+							type="submit" value="发送" />
 					</form> <br></td>
 			</tr>
 			<tr>
@@ -138,11 +138,10 @@ table.altrowstable td {
 						ids(","隔开): <input type="text" name="ids" /><br> <input
 							type="submit" value="删除" align="center" />
 					</form> <br></td>
-				<td><form
-						action="${pageContext.request.contextPath }/goods/getEntityJson.do"
-						method="post">
-						商品json : <input type="text" name="id" id="cid" /><br /> <input
-							type="submit" value="查询" />
+				<td><form 
+						action="${pageContext.request.contextPath }/jms/receiveMessage.do"
+						method="get">
+					 <input 	type="submit" value="接收消息" />
 					</form> <br></td>
 			</tr>
 			<tr>
