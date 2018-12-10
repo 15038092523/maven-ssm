@@ -139,5 +139,5 @@
 	<!-- 配置定时任务的线程池 -->
 	<task:scheduler id="myScheduler" pool-size="5" />
 
-
+	<!--单元测试需要引入各个配置文件才能通过 <import resource="spring-activemq.xml"/> --> 
 </beans>

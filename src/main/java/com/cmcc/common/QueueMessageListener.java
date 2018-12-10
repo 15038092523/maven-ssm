@@ -11,9 +11,6 @@ import com.cmcc.service.GoodsService;
 
 public class QueueMessageListener implements MessageListener  {
 	
-	@Autowired
-	private GoodsService goodsService;
-	
     public void onMessage(Message message) {
         TextMessage tm = (TextMessage) message;
         try {

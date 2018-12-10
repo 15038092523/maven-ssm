@@ -16,4 +16,19 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		select * FROM type 
 		where pid = #{id}  and delete_status = 0
 	</select>
+	
+	<update id="deleteTypeById" parameterType="Integer">
+	update type set delete_status = 1 
+	where id = #{id}
+	</update>
+	
+	<update id="deleteTypeByPid" parameterType="Integer">
+	update type set delete_status = 1 
+	where pid = #{id}
+	</update>
+	
+	<insert id="addType" >
+	insert into type(id,name,pid,version,delete_status)
+	values(#{id},#{name},#{pid},#{version},#{deleteStatus})
+	</insert>
 </mapper> 
